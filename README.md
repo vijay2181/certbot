@@ -13,6 +13,7 @@ Before issuing a certificate, Let’s Encrypt validates ownership of your domain
 - AmiId: ami-01450e8988a4e7f44
 - AmiLocation: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64
 - Nginx is acting as a reverse proxy for the application. A reverse proxy is a server that sits between client devices (like web browsers) and a backend server (like your Docker container running the application). The reverse proxy forwards client requests to the backend server and then returns the server's responses to the clients.
+- Let's Encrypt has a rate limit of 5 certificates per set of domains per 7 days.The error message suggests retrying after 2023-12-29T16:06:33Z, which is the time when the rate limit for this set of domains will be reset. You can wait until that time and then try again.
 
 ```
 python3.9 installation 
