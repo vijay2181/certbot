@@ -12,6 +12,7 @@ Before issuing a certificate, Let’s Encrypt validates ownership of your domain
 - python 3.9 version comes default for amamzon linux 2023
 - AmiId: ami-01450e8988a4e7f44
 - AmiLocation: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64
+- Nginx is acting as a reverse proxy for the application. A reverse proxy is a server that sits between client devices (like web browsers) and a backend server (like your Docker container running the application). The reverse proxy forwards client requests to the backend server and then returns the server's responses to the clients.
 
 ```
 python3.9 installation 
@@ -113,7 +114,10 @@ http {
     }
 }
 
-
 systemctl enable nginx
 sudo systemctl start nginx
 ```
+
+- Traffic comes to the EC2 instance on ports 80 and 443.
+- Nginx, which is configured to listen on ports 80 and 443, acts as a reverse proxy. It takes the incoming traffic and forwards it to the Docker container running the application on port 5000.
+- The Docker container is where your application is running and is accessible internally on port 5000.
